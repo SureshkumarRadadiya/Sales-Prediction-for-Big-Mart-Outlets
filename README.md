@@ -26,3 +26,52 @@ We have train (8523) and test (5681) data set, train data set has both input and
 
 <img src="Correlation Heatmap of Numeric Columns.png">
 
+
+# Approach Note: Sales Prediction for Big Mart Outlets
+
+# Objective:
+
+The primary goal of this project was to build a predictive model to estimate sales for different Big Mart outlets based on historical data. The key focus was on understanding the impact of various features such as product attributes, store type, and location on sales performance.
+
+# Data Exploration & Preprocessing:
+
+Dataset Overview: The dataset consisted of sales data for various products across multiple outlets. The key variables included Item_Identifier, Item_Weight, Item_Fat_Content, Outlet_Identifier, Outlet_Size, Outlet_Location_Type, and Item_Outlet_Sales.
+
+- Handling Missing Values: Imputed missing values for Item_Weight using the mean and handled Outlet_Size inconsistencies by mapping them based on Outlet_Type.
+
+# Feature Engineering: 
+Created new features such as Item_Age (years since establishment), transformed Item_Fat_Content into uniform categories, and encoded categorical variables using Label Encoding and One-Hot Encoding where necessary.
+
+# Model Experimentation:
+
+# Baseline Models:
+- Implemented Linear Regression to establish a baseline understanding of the relationships among features.
+- Observed issues like multicollinearity and heteroscedasticity, requiring further feature selection.
+
+# Tree-Based Models:
+- Decision Tree Regressor: Improved performance but prone to overfitting.
+- Random Forest Regressor: Provided better generalization, handling feature interactions effectively.
+- XGBoost Regressor: Performed best in terms of RMSE, leveraging boosting techniques for improved predictions.
+
+# Hyperparameter Tuning:
+
+# implementation of CatBoostRegressor with hyperparameter tuning using Optuna.
+1. Defining Categorical Features:
+  - Identifies categorical columns using np.where(x_train.dtypes == object)[0].   
+2. Hyperparameter Optimization:
+- Uses Optuna's trial.suggest_* methods to optimize l2_leaf_reg, max_bin, subsample, learning_rate, max_depth, min_data_in_leaf, etc.
+- Splits training data using train_test_split().
+- Initializes CatBoostRegressor with selected parameters.
+  
+- Used GridSearchCV and RandomizedSearchCV for optimizing n_estimators, max_depth, and learning_rate.
+- Final model selection was based on RMSE and cross-validation scores.
+
+# Results & Insights:
+
+- XGBoost delivered the lowest RMSE and was selected as the final model.
+- Store location and outlet type were significant determinants of sales, highlighting the importance of external factors.
+- Feature engineering played a crucial role in improving model accuracy.
+
+# Conclusion & Future Work:
+
+This project successfully built an accurate sales prediction model using tree-based techniques. Future work can include adding external economic indicators, experimenting with deep learning models, and deploying the model into a production environment for real-time predictions.
