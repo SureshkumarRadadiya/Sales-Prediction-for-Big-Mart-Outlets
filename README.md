@@ -10,3 +10,18 @@ Please note that the data may have missing values as some stores might not repor
 
 Data Dictionary
 We have train (8523) and test (5681) data set, train data set has both input and output variable(s). You need to predict the sales for test data set.
+
+<img src="Violin Plot of Item Outlet Sales by Item Type.png">
+
+<img src="Violin Plot of Item Outlet Sales by Outlet Identifier.png">
+
+<img src="Violin Plot of Item Outlet Sales by Outlet Size.png">
+
+<img src="Scatter Plot of Item MRP vs Item Outlet Sales.png">
+
+<img src="Scatter Plot of Item Visibility vs Item Outlet Sales.png">
+
+<img src="Scatter Plot of Item Weight vs Item Outlet Sales.png">
+
+<img src="Correlation Heatmap of Numeric Columns.png">
+
